@@ -961,6 +961,218 @@
         </div>
     </section>
 
+    <style>
+        /* [Previous CSS remains the same until the Portfolio section] */
+
+        /* Gallery Section */
+        .gallery {
+            padding: 6rem 0;
+            background: var(--secondary-color);
+        }
+
+        .dark-theme .gallery {
+            background: var(--primary-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            border: 1px solid var(--gray-light);
+        }
+
+        .dark-theme .gallery-item {
+            border-color: var(--gray-dark);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            filter: grayscale(30%);
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0 2rem;
+        }
+
+        .lightbox-nav button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* [Rest of your existing CSS remains the same] */
+    </style>
+</head>
+<body>
+    <!-- [Your existing header remains the same] -->
+
+    <!-- [Your existing sections remain the same until before Contact] -->
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section">
+        <div class="container">
+            <h2 class="section-title">My Creations</h2>
+            <p class="section-subtitle" style="text-align: center; margin-bottom: 2rem;">A visual collection of my work and projects</p>
+            
+            <div class="gallery-grid">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x600', 'Web Design Project')">
+                    <img src="https://via.placeholder.com/600x600" alt="Project 1" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Web Design</h3>
+                        <p>Minimalist website design</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x600/555', 'Mobile App UI')">
+                    <img src="https://via.placeholder.com/600x600/555" alt="Project 2" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Mobile App</h3>
+                        <p>Clean UI design</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x600/333', 'Brand Identity')">
+                    <img src="https://via.placeholder.com/600x600/333" alt="Project 3" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Branding</h3>
+                        <p>Logo and identity design</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x600/777', 'Dashboard Design')">
+                    <img src="https://via.placeholder.com/600x600/777" alt="Project 4" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Dashboard</h3>
+                        <p>Admin panel interface</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x600/999', 'E-commerce Site')">
+                    <img src="https://via.placeholder.com/600x600/999" alt="Project 5" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>E-commerce</h3>
+                        <p>Online store design</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/800x600/aaa', 'Print Design')">
+                    <img src="https://via.placeholder.com/600x600/aaa" alt="Project 6" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Print Design</h3>
+                        <p>Brochure layout</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" class="lightbox-img" src="" alt="">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+        <div class="lightbox-nav">
+            <button onclick="changeImage(-1)">&#10094;</button>
+            <button onclick="changeImage(1)">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- [Your existing Contact section remains the same] -->
+
+    <!-- [Your existing Footer remains the same] -->
+
+
+
+
+
     <!-- Contact Section -->
     <section id="contact" class="contact section">
         <div class="container">
@@ -1120,6 +1332,74 @@
             alert('Thank you for your message! I will get back to you soon.');
             this.reset();
         });
+
+        
+        //
+
+        // Gallery Lightbox
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        let currentImageIndex = 0;
+        const images = [];
+
+        // Initialize images array
+        galleryItems.forEach((item, index) => {
+            const imgSrc = item.getAttribute('onclick').split("'")[1];
+            const caption = item.getAttribute('onclick').split("'")[3];
+            images.push({ src: imgSrc, caption: caption });
+        });
+
+        function openLightbox(src, caption) {
+            currentImageIndex = images.findIndex(img => img.src === src);
+            lightboxImg.src = src;
+            lightboxCaption.textContent = caption;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeImage(n) {
+            currentImageIndex += n;
+            
+            if (currentImageIndex >= images.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1;
+            }
+            
+            lightboxImg.src = images[currentImageIndex].src;
+            lightboxCaption.textContent = images[currentImageIndex].caption;
+        }
+
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeImage(1);
+                }
+            }
+        });
+
+        // [Rest of your existing JavaScript remains the same]
+    
+
     </script>
 </body>
 </html>
