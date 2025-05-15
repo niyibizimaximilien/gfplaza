@@ -966,6 +966,171 @@
         </div>
     </section>
 
+
+    <!-- Testimonials Section -->
+<section id="testimonials" class="testimonials section">
+    <div class="container">
+        <h2 class="section-title">What Clients Say</h2>
+        <div class="testimonials-grid">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <div class="testimonial-text">
+                        <p>"Maximilien delivered exceptional work on our e-commerce platform. His attention to detail and problem-solving skills turned our vision into reality. The site performs flawlessly and our conversion rates improved significantly."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah K.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah K.</h4>
+                            <p>CEO, ShopRwanda</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <div class="testimonial-text">
+                        <p>"Working with Maximilien was a game-changer for our startup. His minimalist design approach gave our brand the sophisticated look we needed, while his technical implementation was rock-solid. Highly recommended!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James T.">
+                        </div>
+                        <div class="author-info">
+                            <h4>James T.</h4>
+                            <p>CTO, TechSolutions Ltd</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <div class="testimonial-text">
+                        <p>"As a non-technical founder, I appreciated Maximilien's ability to explain complex concepts clearly. He built our entire web presence and continues to provide excellent maintenance support. Truly a professional."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Amina N.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Amina N.</h4>
+                            <p>Founder, GreenRwanda</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Testimonials Styles */
+    .testimonials {
+        background: var(--secondary-color);
+    }
+    
+    .dark-theme .testimonials {
+        background: var(--primary-color);
+    }
+    
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .testimonial-card {
+        background: var(--secondary-color);
+        border: 1px solid var(--gray-light);
+        border-radius: 8px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+    }
+    
+    .dark-theme .testimonial-card {
+        background: var(--gray-dark);
+        border-color: var(--gray-dark);
+    }
+    
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .dark-theme .testimonial-card:hover {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    
+    .testimonial-text {
+        position: relative;
+        margin-bottom: 1.5rem;
+        font-style: italic;
+        line-height: 1.8;
+    }
+    
+    .testimonial-text::before,
+    .testimonial-text::after {
+        color: var(--primary-color);
+        font-size: 3rem;
+        font-family: serif;
+        line-height: 1;
+        position: absolute;
+        opacity: 0.2;
+    }
+    
+    .testimonial-text::before {
+        content: '"';
+        top: -15px;
+        left: -10px;
+    }
+    
+    .testimonial-text::after {
+        content: '"';
+        bottom: -35px;
+        right: -10px;
+    }
+    
+    .dark-theme .testimonial-text::before,
+    .dark-theme .testimonial-text::after {
+        color: var(--secondary-color);
+    }
+    
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .author-avatar img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--primary-color);
+    }
+    
+    .dark-theme .author-avatar img {
+        border-color: var(--secondary-color);
+    }
+    
+    .author-info h4 {
+        font-size: 1rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .author-info p {
+        font-size: 0.8rem;
+        opacity: 0.8;
+    }
+</style>
+
     <style>
         /* [Previous CSS remains the same until the Portfolio section] */
 
