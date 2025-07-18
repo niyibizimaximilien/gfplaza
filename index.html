@@ -1,920 +1,297 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIYIBIZI Maximilien - Portfolio</title>
+    <title>NIYIBIZI Maximilien | Full-Stack Developer</title>
+    <meta name="description" content="Professional portfolio of NIYIBIZI Maximilien, Full-Stack Developer building scalable web apps from Kigali, Rwanda.">
+    <meta name="keywords" content="developer, full-stack, Rwanda, Kigali, software engineer, web developer">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="shortcut icon" href="intore.png" type="image/x-icon" class="favicon">
-    <style>
-        :root {
-            --primary-color: #e74c3c;
-            --primary-dark: #c0392b;
-            --dark-color: #2c3e50;
-            --light-color: #ecf0f1;
-            --gray-color: #95a5a6;
-            --transition: all 0.3s ease;
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#5c6ac4',
+                        dark: '#1a202c',
+                        light: '#f7fafc',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    }
+                }
+            }
         }
-        .favicon{
-            width: 50px;
-            height: 50px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
+    </script>
+    <style type="text/css">
         html {
             scroll-behavior: smooth;
         }
-
-        body {
-            background-color: white;
-            color: #333;
-            line-height: 1.6;
-            transition: var(--transition);
-        }
-
-        .dark-theme {
-            background-color: var(--dark-color);
-            color: var(--light-color);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition);
+        .active {
+            color: #5c6ac4;
             font-weight: 600;
-            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
-        }
-
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section {
-            padding: 6rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-            color: var(--dark-color);
-        }
-
-        .dark-theme .section-title {
-            color: var(--light-color);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary-color);
-        }
-
-        /* Header Styles */
-        .header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .dark-theme .header {
-            background: #1a252f;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            color: var(--primary-color);
-            font-weight: 700;
-            font-size: 1.8rem;
-            letter-spacing: 1px;
-        }
-
-        .nav-list {
-            display: flex;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-list li {
-            margin-left: 2.5rem;
-            position: relative;
-        }
-
-        .nav-list a {
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .nav-list a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .nav-list a:hover::after {
-            width: 100%;
-        }
-
-        .theme-switcher {
-            background: none;
-            border: none;
-            color: var(--dark-color);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .dark-theme .theme-switcher {
-            color: var(--light-color);
-        }
-
-        .theme-switcher:hover {
-            transform: rotate(30deg);
-        }
-
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: var(--dark-color);
-            margin: 5px 0;
-            transition: var(--transition);
-        }
-
-        .dark-theme .hamburger span {
-            background: var(--light-color);
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-
-        .dark-theme .hero {
-            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 3rem;
-        }
-
-        .hero-text {
-            flex: 1;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark-color);
-            line-height: 1.2;
-        }
-
-        .dark-theme .hero-text h1 {
-            color: var(--light-color);
-        }
-
-        .hero-text h2 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .hero-image {
-            position: relative;
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .profile-photo {
-            width: 350px;
-            height: 350px;
-            object-fit: cover;
-            border-radius: 20px;
-            position: relative;
-            box-shadow: 0 20px 30px rgba(0,0,0,0.2);
-            transition: var(--transition);
-        }
-
-        .photo-frame {
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            border: 3px solid var(--primary-color);
-            border-radius: 20px;
-            top: 20px;
-            left: 20px;
-            z-index: -1;
-            transition: var(--transition);
-        }
-
-        /* About Section */
-        .about-content {
-            display: flex;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .skills {
-            margin-top: 2rem;
-        }
-
-        .skills h4 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .skills-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            list-style: none;
-        }
-
-        .skills-list li {
-            background: rgba(231, 76, 60, 0.1);
-            padding: 0.8rem 1rem;
-            border-radius: 5px;
-            font-weight: 500;
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .skills-list li::before {
-            content: '▹';
-            position: absolute;
-            left: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .dark-theme .skills-list li {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .about-stats {
-            flex: 1;
-        }
-
-        /* Portfolio Section */
-        .portfolio-filter {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .filter-btn {
-            background: rgba(231, 76, 60, 0.1);
-            color: var(--dark-color);
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .dark-theme .filter-btn {
-            color: var(--light-color);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .portfolio-item {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
-
-        .dark-theme .portfolio-item {
-            background: #34495e;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-
-        .portfolio-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .portfolio-info {
-            padding: 1.5rem;
-        }
-
-        .portfolio-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
-        }
-
-        .dark-theme .portfolio-info h3 {
-            color: var(--light-color);
-        }
-
-        .portfolio-info p {
-            color: var(--gray-color);
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .portfolio-links a {
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .portfolio-links a i {
-            transition: var(--transition);
-        }
-
-        .portfolio-links a:hover i {
-            transform: translateX(3px);
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-
-        .dark-theme .service-card {
-            background: #34495e;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .service-card i {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact-container {
-            display: flex;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            gap: 1rem;
-        }
-
-        .info-item i {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            width: 50px;
-            height: 50px;
-            background: rgba(231, 76, 60, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .contact-form {
-            flex: 1;
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .dark-theme .contact-form {
-            background: #34495e;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .dark-theme .contact-form input,
-        .dark-theme .contact-form textarea {
-            background: #2c3e50;
-            border-color: #34495e;
-            color: var(--light-color);
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--dark-color);
-            color: var(--light-color);
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-logo {
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-logo a {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .footer-logo p {
-            opacity: 0.8;
-        }
-
-        .footer-links h3,
-        .footer-social h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .footer-links h3::after,
-        .footer-social h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--primary-color);
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            opacity: 0.8;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--primary-color);
-            padding-left: 5px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .social-icons a:hover {
-            background: var(--primary-color);
-            transform: translateY(-5px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer-bottom p {
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-content,
-            .about-content,
-            .contact-container {
-                flex-direction: column;
-            }
-
-            .hero-text {
-                text-align: center;
-                margin-bottom: 3rem;
-            }
-
-            .hero-text p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .about-stats {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-
-            .nav-list {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: white;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: var(--transition);
-                gap: 2rem;
-            }
-
-            .dark-theme .nav-list {
-                background: #1a252f;
-            }
-
-            .nav-list.active {
-                left: 0;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-text h2 {
-                font-size: 1.5rem;
-            }
-
-            .profile-photo {
-                width: 250px;
-                height: 250px;
-            }
-
-            .photo-frame {
-                width: 250px;
-                height: 250px;
-                top: 15px;
-                left: 15px;
-            }
-
-            .skills-list {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-
-            .btn {
-                padding: 0.6rem 1.2rem;
-            }
         }
     </style>
 </head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <a href="#home" class="logo">MAXIMILIEN</a>
-            <nav class="nav">
-                <button class="hamburger" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+<body class="font-sans bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle" class="fixed right-6 bottom-6 z-50 p-3 rounded-full bg-primary text-white shadow-lg hover:bg-indigo-700 transition-colors">
+        <i class="fas fa-moon dark:hidden"></i>
+        <i class="fas fa-sun hidden dark:block"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-primary">Maximilien</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="hover:text-primary transition-colors">About</a>
+                    <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
+                    <a href="#projects" class="hover:text-primary transition-colors">Projects</a>
+                    <a href="#experience" class="hover:text-primary transition-colors">Experience</a>
+                    <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+                </div>
+                <button id="mobileMenuButton" class="md:hidden text-gray-600 dark:text-gray-300">
+                    <i class="fas fa-bars text-2xl"></i>
                 </button>
-                <ul class="nav-list">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li>
-                        <button class="theme-switcher" aria-label="Toggle theme">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
+            </div>
         </div>
-    </header>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-800 px-6 py-4 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="#about" class="hover:text-primary transition-colors">About</a>
+                <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-primary transition-colors">Projects</a>
+                <a href="#experience" class="hover:text-primary transition-colors">Experience</a>
+                <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero section">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>NIYIBIZI Maximilien</h1>
-                    <h2>Web Developer & UI/UX Designer</h2>
-                    <p>I create beautiful, functional websites and applications with a focus on user experience and responsive design. My passion is turning ideas into digital reality.</p>
-                    <a href="#portfolio" class="btn">View My Work</a>
+    <section id="hero" class="min-h-screen flex items-center">
+        <div class="container mx-auto px-6 py-20">
+            <div class="max-w-2xl animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">NIYIBIZI Maximilien</h1>
+                <div class="flex items-center mb-6">
+                    <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                    <span class="text-lg">Kigali, Rwanda</span>
                 </div>
-                <div class="hero-image">
-                    <!-- Replace with your actual photo -->
-                    <img src="newhero.png" alt="Maximilien Niyibizi" loading="lazy"  class="profile-photo">
-                    <div class="photo-frame"></div>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-primary">Full-Stack Developer building scalable web apps and creating great user experiences.</h2>
+                <p class="text-lg mb-8">Currently crafting digital solutions at <span class="font-semibold">Norrsken Kigali</span> with a passion for clean code and intuitive interfaces.</p>
+                <div class="flex space-x-4 mb-12">
+                    <a href="https://github.com/niyibizimaximilien" target="_blank" class="text-2xl hover:text-primary transition-colors" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://x.com/NiyibiziMa46285" target="_blank" class="text-2xl hover:text-primary transition-colors" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
                 </div>
+                <a href="#contact" class="bg-primary hover:bg-indigo-700 text-white px-8 py-3 rounded-lg font-medium transition-colors inline-block">
+                    Contact Me
+                </a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about section">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Who I Am</h3>
-                    <p>I'm a passionate web developer and designer with expertise in creating modern, responsive websites and web applications. With a strong foundation in both front-end and back-end technologies, I bring ideas to life with clean, efficient code and intuitive user interfaces.</p>
-                    <p>My approach combines technical skills with creative design thinking to deliver solutions that not only function flawlessly but also provide exceptional user experiences.</p>
-                    
-                    <div class="skills">
-                        <h4>My Skills</h4>
-                        <ul class="skills-list">
-                            <li>HTML5, CSS3, JavaScript</li>
-                            <li>React & Vue.js</li>
-                            <li>PHP & MySQL</li>
-                            <li>UI/UX Design</li>
-                            <li>Responsive Design</li>
-                            <li>Git Version Control</li>
-                            <li>API Integration</li>
-                            <li>Database Design</li>
-                        </ul>
+    <section id="about" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">About Me</h2>
+            <div class="max-w-3xl mx-auto animate-slide-up">
+                <p class="text-lg mb-4">Hello! I'm Maximilien, a passionate Full-Stack Developer based in Kigali, Rwanda. With a strong foundation in both frontend and backend technologies, I specialize in building responsive, user-friendly web applications that solve real-world problems.</p>
+                <p class="text-lg mb-4">My journey in software development is driven by continuous learning and collaboration. I thrive in environments where I can contribute my skills while growing alongside talented teams. Whether it's crafting pixel-perfect interfaces or designing robust APIs, I approach each challenge with enthusiasm and attention to detail.</p>
+                <p class="text-lg mb-4">Beyond coding, I'm committed to creating solutions that make a meaningful impact. I believe technology should be accessible and intuitive, and I strive to bridge the gap between complex systems and end-users through thoughtful design and implementation.</p>
+                <p class="text-lg">When I'm not at my desk, you'll find me exploring new technologies, contributing to open-source projects, or mentoring aspiring developers in my community.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">My Skills</h2>
+            <div class="grid md:grid-cols-3 gap-8 animate-fade-in">
+                <!-- Frontend Skills -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-laptop-code text-2xl mr-3 text-primary"></i>
+                        <h3 class="text-xl font-semibold">Frontend</h3>
                     </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            HTML5 & CSS3
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            JavaScript (ES6+)
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            React.js
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Tailwind CSS
+                        </li>
+                    </ul>
                 </div>
-                <div class="about-stats">
-                    <!-- You can add progress bars or other visual elements here -->
-                    <div style="background: rgba(231, 76, 60, 0.1); padding: 2rem; border-radius: 10px;">
-                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Experience</h3>
-                        <p><strong>5+ Years</strong> in Web Development</p>
-                        <p><strong>50+ Projects</strong> Completed</p>
-                        <p><strong>100%</strong> Client Satisfaction</p>
+                
+                <!-- Backend Skills -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-server text-2xl mr-3 text-primary"></i>
+                        <h3 class="text-xl font-semibold">Backend</h3>
                     </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Node.js
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Python (Flask/Django)
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            REST API Design
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Databases (MySQL, MongoDB)
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Tools -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-tools text-2xl mr-3 text-primary"></i>
+                        <h3 class="text-xl font-semibold">Tools & More</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Git & GitHub
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Docker
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Vercel Deployment
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Agile Workflows
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web">Web</button>
-                <button class="filter-btn" data-filter="design">Design</button>
-                <button class="filter-btn" data-filter="app">Apps</button>
-            </div>
-            <div class="portfolio-grid">
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div class="portfolio-item web">
-                   
-                    <div class="portfolio-info">
-                        <h3>GF Plaza Website</h3>
-                        <p>A comprehensive commercial space management system with booking functionality and admin dashboard.</p>
-                        <div class="portfolio-links">
-                            <a href="#" class="btn">Live Demo <i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/niyibizimaximilien"><i class="fab fa-github"></i> Code</a>
+                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow animate-slide-up">
+                    <div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                        <i class="fas fa-project-diagram text-5xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">E-Commerce Platform</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">A full-featured online store with product management and payment integration.</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Built with React, Node.js, MongoDB, and Stripe API for seamless transactions.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm text-primary hover:underline">GitHub</a>
+                            <a href="#" class="text-sm text-primary hover:underline">Live Demo</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="portfolio-item web">
-            
-                    <div class="portfolio-info">
-                        <h3>E-commerce Platform</h3>
-                        <p>Full-featured online store with product management, cart system, and payment integration.</p>
-                        <div class="portfolio-links">
-                            <a href="" class="btn">Live Demo <i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/niyibizimaximilien"><i class="fab fa-github"></i> Code</a>
+                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow animate-slide-up" style="animation-delay: 0.1s;">
+                    <div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                        <i class="fas fa-tasks text-5xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Task Management App</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Collaborative tool for teams to organize and track projects.</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Developed with React, Firebase, and real-time updates for team collaboration.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm text-primary hover:underline">GitHub</a>
+                            <a href="#" class="text-sm text-primary hover:underline">Live Demo</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="portfolio-item design">
-                    
-                    <div class="portfolio-info">
-                        <h3>UI/UX Dashboard</h3>
-                        <p>Modern admin dashboard design with data visualization components and responsive layout.</p>
-                        <div class="portfolio-links">
-                            <a href="https://www.figma.com/files/team/1486300721870838537/recents-and-sharing?fuid=1486300719794804073" class="btn">View Design <i class="fas fa-external-link-alt"></i></a>
-                            <a href="#"><i class="fab fa-figma"></i> Figma</a>
+                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                        <i class="fas fa-utensils text-5xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Restaurant Finder</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Discover and review local restaurants with interactive maps.</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Utilized Django, PostgreSQL, and Mapbox API for location services.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm text-primary hover:underline">GitHub</a>
+                            <a href="#" class="text-sm text-primary hover:underline">Live Demo</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Project 4 -->
-                <div class="portfolio-item app">
-                    
-                    <div class="portfolio-info">
-                        <h3>Task Management App</h3>
-                        <p>Productivity application with team collaboration features and real-time updates.</p>
-                        <div class="portfolio-links">
-                            <a href="#" class="btn">Try Demo <i class="fas fa-external-link-alt"></i></a>
-                            <a href="#"><i class="fab fa-github"></i> Code</a>
+                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow animate-slide-up" style="animation-delay: 0.3s;">
+                    <div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-5xl text-gray-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Financial Dashboard</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Visualize and analyze personal finance data with interactive charts.</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Created with React, Chart.js, and Node.js backend for data processing.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm text-primary hover:underline">GitHub</a>
+                            <a href="#" class="text-sm text-primary hover:underline">Live Demo</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Project 5 -->
-                <div class="portfolio-item web">
-                    
-                    <div class="portfolio-info">
-                        <h3>Restaurant Booking System</h3>
-                        <p>Online reservation platform with table management and customer notifications.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/WAMUKAPO/nextjs-blog-theme" class="btn">Live Demo <i class="fas fa-external-link-alt"></i></a>
-                            <a href="#"><i class="fab fa-github"></i> Code</a>
-                        </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow animate-slide-up" style="animation-delay: 0.4s;">
+                    <div class="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                        <i class="fas fa-blog text-5xl text-gray-400"></i>
                     </div>
-                </div>
-                
-                <!-- Project 6 -->
-                <div class="portfolio-item design">
-            
-                    <div class="portfolio-info">
-                        
-                        <h3>Brand Identity Package</h3>
-                        <p>Complete branding solution including logo, color palette, and marketing materials.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/WAMUKAPO/nextjs-blog-theme" class="btn"> View Case Study <i class="fas fa-external-link-alt"></i></a>
-                            <a href="#"><i class="fab fa-behance"></i> Behance</a>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Developer Blog Platform</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Markdown-powered blogging platform for technical content.</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Built with Next.js, Tailwind CSS, and Markdown parsing for content management.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm text-primary hover:underline">GitHub</a>
+                            <a href="#" class="text-sm text-primary hover:underline">Live Demo</a>
                         </div>
                     </div>
                 </div>
@@ -922,555 +299,164 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services section">
-        <div class="container">
-            <h2 class="section-title">My Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-laptop-code"></i>
-                    <h3>Web Development</h3>
-                    <p>Custom website development using modern technologies to create fast, responsive, and scalable web applications.</p>
-                </div>
-                
-                <div class="service-card">
-                    <i class="fas fa-paint-brush"></i>
-                    <h3>UI/UX Design</h3>
-                    <p>Beautiful, intuitive user interfaces designed with user experience principles to maximize engagement.</p>
-                </div>
-                
-                <div class="service-card">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3>Responsive Design</h3>
-                    <p>Websites that look and function perfectly on all devices, from desktop to mobile.</p>
-                </div>
-                
-                <div class="service-card">
-                    <i class="fas fa-database"></i>
-                    <h3>Database Solutions</h3>
-                    <p>Custom database design and implementation for efficient data management and retrieval.</p>
-                </div>
-                
-                <div class="service-card">
-                    <i class="fas fa-shopping-cart"></i>
-                    <h3>E-commerce</h3>
-                    <p>Complete online store solutions with product management, payment gateways, and order processing.</p>
-                </div>
-                
-                <div class="service-card">
-                    <i class="fas fa-search"></i>
-                    <h3>SEO Optimization</h3>
-                    <p>Improve your website's visibility and ranking on search engines to attract more visitors.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Testimonials Section -->
-<section id="testimonials" class="testimonials section">
-    <div class="container">
-        <h2 class="section-title">What Clients Say On My Works</h2>
-        <div class="testimonials-grid">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-card">
-                <div class="testimonial-content">
-                    <div class="testimonial-text">
-                        <p>"Maximilien delivered exceptional work on our e-commerce platform. His attention to detail and problem-solving skills turned our vision into reality. The site performs flawlessly and our conversion rates improved significantly."</p>
+    <!-- Experience Section -->
+    <section id="experience" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Work Experience</h2>
+            <div class="max-w-3xl mx-auto animate-slide-up">
+                <div class="mb-10">
+                    <h3 class="text-xl font-semibold mb-1">Software Developer</h3>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                        <span class="text-primary font-medium">Norrsken Kigali</span>
+                        <span class="text-gray-600 dark:text-gray-400">Jan 2024 - Present</span>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah K.">
-                        </div>
-                        <div class="author-info">
-                            <h4>Sarah K.</h4>
-                            <p>CEO, ShopRwanda</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Testimonial 2 -->
-            <div class="testimonial-card">
-                <div class="testimonial-content">
-                    <div class="testimonial-text">
-                        <p>"Working with Maximilien was a game-changer for our startup. His minimalist design approach gave our brand the sophisticated look we needed, while his technical implementation was rock-solid. Highly recommended!"</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James T.">
-                        </div>
-                        <div class="author-info">
-                            <h4>James T.</h4>
-                            <p>CTO, TechSolutions Ltd</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Testimonial 3 -->
-            <div class="testimonial-card">
-                <div class="testimonial-content">
-                    <div class="testimonial-text">
-                        <p>"As a non-technical founder, I appreciated Maximilien's ability to explain complex concepts clearly. He built our entire web presence and continues to provide excellent maintenance support. Truly a professional."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Amina N.">
-                        </div>
-                        <div class="author-info">
-                            <h4>Amina N.</h4>
-                            <p>Founder, GreenRwanda</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<style>
-    /* Testimonials Styles */
-    .testimonials {
-        background: var(--secondary-color);
-    }
-    
-    .dark-theme .testimonials {
-        background: var(--primary-color);
-    }
-    
-    .testimonials-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-    }
-    
-    .testimonial-card {
-        background: var(--secondary-color);
-        border: 1px solid var(--gray-light);
-        border-radius: 8px;
-        padding: 2rem;
-        transition: all 0.3s ease;
-    }
-    
-    .dark-theme .testimonial-card {
-        background: var(--gray-dark);
-        border-color: var(--gray-dark);
-    }
-    
-    .testimonial-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-    
-    .dark-theme .testimonial-card:hover {
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    }
-    
-    .testimonial-text {
-        position: relative;
-        margin-bottom: 1.5rem;
-        font-style: italic;
-        line-height: 1.8;
-    }
-    
-    .testimonial-text::before,
-    .testimonial-text::after {
-        color: var(--primary-color);
-        font-size: 3rem;
-        font-family: serif;
-        line-height: 1;
-        position: absolute;
-        opacity: 0.2;
-    }
-    
-    .testimonial-text::before {
-        content: '"';
-        top: -15px;
-        left: -10px;
-    }
-    
-    .testimonial-text::after {
-        content: '"';
-        bottom: -35px;
-        right: -10px;
-    }
-    
-    .dark-theme .testimonial-text::before,
-    .dark-theme .testimonial-text::after {
-        color: var(--secondary-color);
-    }
-    
-    .testimonial-author {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-    
-    .author-avatar img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid var(--primary-color);
-    }
-    
-    .dark-theme .author-avatar img {
-        border-color: var(--secondary-color);
-    }
-    
-    .author-info h4 {
-        font-size: 1rem;
-        margin-bottom: 0.2rem;
-    }
-    
-    .author-info p {
-        font-size: 0.8rem;
-        opacity: 0.8;
-    }
-</style>
-
-    <style>
-        /* [Previous CSS remains the same until the Portfolio section] */
-
-        /* Gallery Section */
-        .gallery {
-            padding: 6rem 0;
-            background: var(--secondary-color);
-        }
-
-        .dark-theme .gallery {
-            background: var(--primary-color);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 1/1;
-            border: 1px solid var(--gray-light);
-        }
-
-        .dark-theme .gallery-item {
-            border-color: var(--gray-dark);
-        }
-
-        .gallery-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            filter: grayscale(30%);
-
-        }
-
-        .gallery-item:hover .gallery-img {
-            transform: scale(1.05);
-            filter: grayscale(0%);
-        }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 1rem;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
-        }
-
-        /* Lightbox Styles */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox-img {
-            max-width: 100%;
-            max-height: 80vh;
-            object-fit: contain;
-        }
-
-        .lightbox-caption {
-            color: white;
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 0 2rem;
-        }
-
-        .lightbox-nav button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-
-        /* [Rest of your existing CSS remains the same] */
-    </style>
-</head>
-<body>
-    <!-- [Your existing header remains the same] -->
-
-    <!-- [Your existing sections remain the same until before Contact] -->
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery section">
-        <div class="container">
-            <h2 class="section-title">My Creations</h2>
-            <p class="section-subtitle" style="text-align: center; margin-bottom: 2rem;">A visual collection of my work and projects</p>
-            
-            <div class="gallery-grid">
-                <!-- Gallery Item 1 -->
-                <div class="gallery-item" onclick="openLightbox('crazy art.png', 'Egyptian image')">
-                    <img src="crazy art.png" alt="Project 1" loading="lazy" class="gallery-img">
-                    <div class="gallery-caption">
-                        <h3>Egyptian image</h3>
-                        <p>Crazy Mind-set image</p>
-                    </div>
-                </div>
-                
-                <!-- Gallery Item 2 -->
-                <div class="gallery-item" onclick="openLightbox('daily three.png', 'daily three image')">
-                    <img src="daily three.png" alt="Project 2" class="gallery-img">
-                    <div class="gallery-caption">
-                        <h3>Moon light image</h3>
-                        <p>Moon light image</p>
-                    </div>
-                </div>
-                
-                <!-- Gallery Item 3 -->
-                <div class="gallery-item" onclick="openLightbox('intore.png', 'unique logo')">
-                    <img src="intore.png" alt="Project 3" class="gallery-img">
-                    <div class="gallery-caption">
-                        <h3>Rwandan Culture</h3>
-                        <p>Logo and identity design</p>
-                    </div>
-                </div>
-                
-                <!-- Gallery Item 4 -->
-                <div class="gallery-item" onclick="openLightbox('kagame in style.png', 'Dashboard Design')">
-                    <img src="kagame in style.png" alt="Project 4" class="gallery-img">
-                    <div class="gallery-caption">
-                        <h3>LOGO ON VIP SUIT</h3>
-                        <p>unique vip branding</p>
-                    </div>
-                </div>
-                
-                <!-- Gallery Item 5 -->
-                <div class="gallery-item" onclick="openLightbox('amoeba.png', 'E-commerce Site')">
-                    <img src="amoeba.png" alt="Project 5" class="gallery-img">
-                    <div class="gallery-caption">
-                        <h3>amoeba design</h3>
-                        <p>amoeba higher level design</p>
-                    </div>
-                </div>
-                
-                <!-- Gallery Item 6 -->
-                <div class="gallery-item" onclick="openLightbox('zero-net.png', 'Print Design')">
-                    <img src="zero-net.png" alt="Project 6" class="gallery-img">
-                    <div class="gallery-caption">
-                        <h3>Print Design</h3>
-                        <p>Brochure layout</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox">
-        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-        <div class="lightbox-content">
-            <img id="lightbox-img" class="lightbox-img" src="" alt="">
-            <div id="lightbox-caption" class="lightbox-caption"></div>
-        </div>
-        <div class="lightbox-nav">
-            <button onclick="changeImage(-1)">&#10094;</button>
-            <button onclick="changeImage(1)">&#10095;</button>
-        </div>
-    </div>
-
-    <!-- [Your existing Contact section remains the same] -->
-
-    <!-- [Your existing Footer remains the same] -->
-
-
-
-
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                   <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <p><a href="mailto:maximilien@example.com" class="contact-link">maximilien@example.com</a></p>
-                </div>
-                
-                <div class="info-item">
-                    <i class="fas fa-phone"></i>
-                    <p><a href="tel:+250794411286" class="contact-link">+250 794 411 286</a></p>
-                </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>Kigali, Rwanda</p>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-clock"></i>
-                        <p>Mon-Fri: 9AM - 5PM</p>
-                    </div>
-                </div>
-                
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <input type="text" placeholder="Subject">
-                    <textarea placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-    
-    <script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js" defer></script>
-<script src="https://files.bpcontent.cloud/2025/07/08/10/20250708105348-C7JGRJSK.js" defer></script>
-    
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <a href="#home">MAXIMILIEN</a>
-                    <p>Creating digital experiences that matter. Professional web solutions tailored to your needs.</p>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Develop and maintain scalable web applications using modern JavaScript frameworks and cloud services.</li>
+                        <li>Collaborate with cross-functional teams to design and implement new features and improvements.</li>
+                        <li>Optimize application performance and ensure responsive design across all devices.</li>
+                        <li>Mentor junior developers and conduct code reviews to maintain high code quality standards.</li>
                     </ul>
                 </div>
                 
-                <div class="footer-social">
-                    <h3>Connect With Me</h3>
-                    <div class="social-icons">
-                        <a href="https://github.com/niyibizimaximilien"><i class="fab fa-github"></i></a>
-                        <a href="https://linkedin.com/in/
-niyibizi-maximilien-88487034a/"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-behance"></i></a>
+                <div class="pt-8 border-t border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-semibold mb-1">Freelance Web Developer</h3>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                        <span class="text-primary font-medium">Self-Employed</span>
+                        <span class="text-gray-600 dark:text-gray-400">2022 - 2023</span>
+                    </div>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Delivered custom web solutions for clients across various industries, from small businesses to startups.</li>
+                        <li>Worked closely with clients to understand requirements and translate them into technical specifications.</li>
+                        <li>Implemented SEO best practices and accessibility standards in all projects.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Get In Touch</h2>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 animate-fade-in">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Let's build something great together!</h3>
+                    <p class="mb-6">I'm currently open to new opportunities, collaborations, or just a friendly chat about tech. Feel free to reach out through any of these channels:</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3 text-xl"></i>
+                            <a href="mailto:niyibizimaximilien@gmail.com" class="hover:underline">niyibizimaximilien@gmail.com</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-3 text-xl"></i>
+                            <a href="tel:+250794411286" class="hover:underline">+250 794 411 286</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-whatsapp text-primary mr-3 text-xl"></i>
+                            <a href="https://wa.me/250794411286" target="_blank" class="hover:underline">WhatsApp</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-medium mb-3">Connect with me:</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/niyibizimaximilien" target="_blank" class="text-2xl hover:text-primary transition-colors" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://x.com/NiyibiziMa46285" target="_blank" class="text-2xl hover:text-primary transition-colors" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label for="name" class="block mb-1 font-medium">Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-1 font-medium">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-1 font-medium">Message</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit" class="bg-primary hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full">
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="formSuccess" class="hidden mt-4 p-4 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-lg">
+                        Message sent successfully! I'll get back to you soon.
                     </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; <span id="year"></span> Niyibizi Maximilien. All rights reserved.</p>
-            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-200 dark:bg-gray-900">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; <span id="currentYear"></span> NIYIBIZI Maximilien. All rights reserved.</p>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Built with <i class="fas fa-heart text-red-500"></i> and lots of coffee</p>
         </div>
     </footer>
 
-    <script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js" defer></script>
-<script src="https://files.bpcontent.cloud/2025/07/08/11/20250708112138-5UYRSVZ1.js" defer></script>
-    
     <script>
-        // Mobile Menu Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navList = document.querySelector('.nav-list');
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navList.classList.toggle('active');
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
+
+        // Check for saved user preference or system preference
+        if (localStorage.getItem('darkMode') === 'true' || 
+            (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('darkMode', html.classList.contains('dark'));
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
         // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-list a').forEach(link => {
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
             link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navList.classList.remove('active');
+                mobileMenu.classList.add('hidden');
             });
         });
 
-        // Theme Switcher
-        const themeSwitcher = document.querySelector('.theme-switcher');
-        const icon = themeSwitcher.querySelector('i');
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
 
-        themeSwitcher.addEventListener('click', () => {
-            document.body.classList.toggle('dark-theme');
-            
-            if(document.body.classList.contains('dark-theme')) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
-            }
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would typically send the form data to a server
+            // For demo purposes, we'll just show the success message
+            formSuccess.classList.remove('hidden');
+            contactForm.reset();
+            setTimeout(() => {
+                formSuccess.classList.add('hidden');
+            }, 5000);
         });
 
-        // Check for saved theme preference
-        if(localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-theme');
-            icon.classList.replace('fa-moon', 'fa-sun');
-        }
-
-        // Smooth Scrolling
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
@@ -1478,107 +464,27 @@ niyibizi-maximilien-88487034a/"><i class="fab fa-linkedin"></i></a>
             });
         });
 
-        // Portfolio Filter
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        // Highlight active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
 
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                const filterValue = button.getAttribute('data-filter');
-                
-                portfolioItems.forEach(item => {
-                    if(filterValue === 'all' || item.classList.contains(filterValue)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
             });
         });
-
-        // Set current year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Form submission
-        const contactForm = document.querySelector('.contact-form');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
-        });
-
-        
-        //
-
-        // Gallery Lightbox
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxCaption = document.getElementById('lightbox-caption');
-        let currentImageIndex = 0;
-        const images = [];
-
-        // Initialize images array
-        galleryItems.forEach((item, index) => {
-            const imgSrc = item.getAttribute('onclick').split("'")[1];
-            const caption = item.getAttribute('onclick').split("'")[3];
-            images.push({ src: imgSrc, caption: caption });
-        });
-
-        function openLightbox(src, caption) {
-            currentImageIndex = images.findIndex(img => img.src === src);
-            lightboxImg.src = src;
-            lightboxCaption.textContent = caption;
-            lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function changeImage(n) {
-            currentImageIndex += n;
-            
-            if (currentImageIndex >= images.length) {
-                currentImageIndex = 0;
-            } else if (currentImageIndex < 0) {
-                currentImageIndex = images.length - 1;
-            }
-            
-            lightboxImg.src = images[currentImageIndex].src;
-            lightboxCaption.textContent = images[currentImageIndex].caption;
-        }
-
-        // Close lightbox when clicking outside the image
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (lightbox.style.display === 'flex') {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                } else if (e.key === 'ArrowLeft') {
-                    changeImage(-1);
-                } else if (e.key === 'ArrowRight') {
-                    changeImage(1);
-                }
-            }
-        });
-
-        // [Rest of your existing JavaScript remains the same]
-    
-
     </script>
 </body>
 </html>
